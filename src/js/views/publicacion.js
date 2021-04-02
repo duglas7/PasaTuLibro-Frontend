@@ -1,139 +1,197 @@
 import React from "react";
-import Footer from "../component/footer";
-import Navbar from "../component/navbar";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
-function publicacion() {
+function formatNumber(number) {
+  return new Intl.NumberFormat().format(number);
+}
+
+const Publicacion = ({ match }, props) => {
+  const { store } = useContext(Context);
+
+  const id = match.params.id;
+
   return (
     <>
       <Navbar />
       <div className="container mt-5">
-        <h2 className="margentop">Nombre de la publicacion</h2>
+        <h2 className="mt-5">PERMUTA / VENTA</h2>
         <hr />
         <div className="row align-items-center">
-          {/* <!-- For Demo Purpose --> */}
           <div className="col-md-4 pr-lg-4 mb-5 mb-md-0">
             <div
               id="carouselExampleControls"
-              class="carousel slide"
+              className="carousel slide"
               data-ride="carousel"
             >
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    src="https://image.freepik.com/vector-gratis/concepto-cursos-idiomas-online-estudiar-idiomas-extranjeros-escuela-o-universidad-leccion-ingles-ilustracion-isometrica-vector_277904-1170.jpg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
                   <img
                     src="https://image.freepik.com/free-photo/front-view-composition-with-different-books_23-2148851051.jpg"
-                    class="d-block w-100"
+                    className="d-block w-100"
                     alt="..."
                   />
                 </div>
-                <div class="carousel-item">
+                <div className="carousel-item">
+                  <img
+                    src="https://image.freepik.com/vector-gratis/concepto-cursos-idiomas-online-estudiar-idiomas-extranjeros-escuela-o-universidad-leccion-ingles-ilustracion-isometrica-vector_277904-1170.jpg"
+                    className="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div className="carousel-item">
                   <img
                     src="https://image.freepik.com/free-photo/creative-assortment-with-different-books_23-2148851023.jpg"
-                    class="d-block w-100"
+                    className="d-block w-100"
                     alt="..."
                   />
                 </div>
               </div>
               <a
-                class="carousel-control-prev"
+                className="carousel-control-prev"
                 href="#carouselExampleControls"
                 role="button"
                 data-slide="prev"
               >
                 <span
-                  class="carousel-control-prev-icon"
+                  className="carousel-control-prev-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Previous</span>
+                <span className="sr-only">Previous</span>
               </a>
               <a
-                class="carousel-control-next"
+                className="carousel-control-next"
                 href="#carouselExampleControls"
                 role="button"
                 data-slide="next"
               >
                 <span
-                  class="carousel-control-next-icon"
+                  className="carousel-control-next-icon"
                   aria-hidden="true"
                 ></span>
-                <span class="sr-only">Next</span>
+                <span className="sr-only">Next</span>
               </a>
             </div>
           </div>
-          {/*    <!-- Registeration Form --> */}
-          <div className="col-md-8 col-lg-8 mt-5 ml-auto">
+
+          <div className="col-md-8 col-lg-8 ml-auto">
             <div className="pubboder">
-              <h2>
-                Titulo: <p>Tic en la Educación</p>
-              </h2>
-              <h2>
-                Autor: <p>Chirinos armas</p>
-              </h2>
-              <h2>
-                Editorial: <p>Marcombo</p>
-              </h2>
-              <h2>
-                Categoria: <p>Informatica</p>
-              </h2>
-              <h2>
-                Nivel: <p>2do basico</p>
-              </h2>
-              <h2>
-                Colegio: <p>Arturo Prat</p>
-              </h2>
-              <h2>
-                Estado: <p>Nuevo</p>
-              </h2>
-              <h2>
-                Precio / Permuta:<p>25.000$</p>
-              </h2>
-              <h2>
-                Comentarios:
-                <p>
-                  Esto es una prueba para ver como se ve el comentario del libro
-                  no hacer caso literal a lo que dice el mismo
+              <h5 className="m-0 p-0">
+                Titulo:
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].titulo}
                 </p>
-              </h2>
-              <div className="form-group col-lg-12 mb-0">
-                <a href="#" className="btn btn-primary btn-block py-2">
-                  <span className="font-weight-bold">Comprar / Permuta</span>
-                </a>
-              </div>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Autor:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].nombreAutor}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Editorial:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].editorial}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Nivel:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].nivel}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Asignatura:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].asignatura}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Estado:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].estadoNuevoUsado}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Condición:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].condicionOriginalCopia}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Tipo:{" "}
+                <p className="text-capitalize m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].tipoIntercambio}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Precio:
+                <p className="m-0 p-0 colorPublicacion font-weight-bold">
+                  $ {formatNumber(store.publicaciones[id - 1].precio)}
+                </p>
+                <hr className="mt-0" />
+              </h5>
+              <h5 className="m-0 p-0">
+                Comentarios:
+                <p className="m-0 p-0 colorPublicacion font-weight-bold">
+                  {store.publicaciones[id - 1].comentarios}
+                </p>
+                <hr className="mt-0" />
+              </h5>
             </div>
           </div>
         </div>
-        <div className="mt-4">
-          <label>Preguntas:</label>
-          <p>Hola muy buenas tardes aun tiene el libro disponible?</p>
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Realice su pregunta"
-              aria-label="Recipient's username"
-              aria-describedby="button-addon2"
-            />
-            <div class="input-group-append">
-              <button
-                class="btn btn-primary"
-                type="button"
-                id="button-addon2"
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4"></div>
+          <div className="col-lg-8">
+            {!!store.isAuth ? (
+              <Link
+                to={`/usuarios/${store.publicaciones[id - 1].cliente_id}`}
+                className="btn btn-primary btn-block font-weight-bold"
               >
-                Preguntar
-              </button>
-            </div>
+                Contactame
+              </Link>
+            ) : (
+              <h5 className="m-0 p-0">
+                Contacto
+                <p className="colorPublicacion font-weight-bold">
+                  Para contactar con el vendedor debes
+                  <Link
+                    className="font-weight-bold colorPublicacion2 mr-1 ml-1 h5"
+                    to="/create"
+                  >
+                    <u>Registrarte</u>
+                  </Link>
+                  o
+                  <Link
+                    className="font-weight-bold colorPublicacion2 mr-1 ml-1 h5"
+                    to="/login"
+                  >
+                    <u>Iniciar sesión</u>
+                  </Link>
+                </p>
+                <hr className="mt-0" />
+              </h5>
+            )}
           </div>
         </div>
       </div>
       <Footer />
     </>
   );
-}
+};
 
-export default publicacion;
+export default Publicacion;

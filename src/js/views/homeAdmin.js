@@ -1,9 +1,9 @@
 import React from "react";
-import Footer from "../component/footer";
-import Navbar from "../component/navbar";
-import Table from "../component/Table";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+import Table from "../components/Table";
 
-const homeAdmin = () => {
+const HomeAdmin = () => {
   return (
     <>
       <Navbar />
@@ -81,4 +81,4 @@ const homeAdmin = () => {
   );
 };
 
-export default homeAdmin;
+export default HomeAdmin;

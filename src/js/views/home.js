@@ -1,15 +1,10 @@
-
-import '../../styles/styles.css';
-import Navbar from '../component/navbar';
-import Masthead from '../component/masthead';
-import Services from '../component/services';
-import PortfolioGrid from '../component/portfoliogrid';
-import About from '../component/about';
-import Teams from '../component/team';
-import Clients from '../component/clients';
-import Contact from '../component/contact';
-import Footer from '../component/footer';
-import PortfolioModal from '../component/portfolioModals';
+import "../../styles/styles.css";
+import Navbar from "../components/navbar";
+import Masthead from "../components/masthead";
+import Services from "../components/services";
+import Teams from "../components/team";
+import Footer from "../components/footer";
+import Publicidad from "../components/Publicidad";
 
 function Home() {
   return (
@@ -17,13 +12,9 @@ function Home() {
       <Navbar />
       <Masthead />
       <Services />
-      <PortfolioGrid />
-      <About />
+      <Publicidad />
       <Teams />
-      <Clients /> 
-      <Contact />
       <Footer />
-      <PortfolioModal />
     </div>
   );
 }

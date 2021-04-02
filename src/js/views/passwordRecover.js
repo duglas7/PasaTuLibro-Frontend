@@ -1,14 +1,14 @@
 import React from "react";
-import Footer from "../component/footer";
-import Navbar from "../component/navbar";
-import "./login.css";
-const passwordRecover = () => {
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+import "../../styles/login.css";
+
+const PasswordRecover = () => {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div className="container mt-5">
         <div className="row py-5 mt-4 align-items-center">
-          {/* <!-- For Demo Purpose --> */}
           <div className="col-md-5 pr-lg-5 mb-5 mb-md-0">
             <img
               src="https://image.freepik.com/vector-gratis/concepto-cursos-idiomas-online-estudiar-idiomas-extranjeros-escuela-o-universidad-leccion-ingles-ilustracion-isometrica-vector_277904-1170.jpg"
@@ -21,7 +21,6 @@ const passwordRecover = () => {
               non.
             </p>
           </div>
-          {/*    <!-- Registeration Form --> */}
           <div className="col-md-7 col-lg-6 ml-auto">
             <form action="#">
               <div className="row">
@@ -44,9 +43,9 @@ const passwordRecover = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
 
-export default passwordRecover;
+export default PasswordRecover;

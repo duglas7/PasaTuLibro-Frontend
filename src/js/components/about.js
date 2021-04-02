@@ -8,7 +8,7 @@ function About() {
         <section className="page-section" id="about">
             <div className="container">
                 <div className="text-center">
-                    <h2 className="section-heading text-uppercase">About</h2>
+                    <h2 className="section-heading text-uppercase">Acerca de</h2>
                     <h3 className="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
                 <ul className="timeline">

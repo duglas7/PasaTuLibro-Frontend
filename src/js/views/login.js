@@ -1,65 +1,73 @@
-import React from "react";
-import Navbar from "../component/navbar";
-import Footer from "../component/footer";
-import "./login.css";
-const Login = () => {
+import React, { useEffect } from "react";
+import Footer from "../components/footer";
+import "../../styles/login.css";
+import { useContext } from "react";
+import { Context } from "../store/appContext";
+import Navbar from "../components/navbar";
+import { Link } from "react-router-dom";
+
+const Login = (props) => {
+  const { store, actions } = useContext(Context);
+  const { history } = props;
+
+  useEffect(() => {
+    if (store.isAuth) history.push("/");
+  }, []);
+
   return (
     <>
       <Navbar />
-      <div className="content box-sizing">
-        <div className="container margentop">
+      <div className="content box-sizing mt-5 pb-5">
+        <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 contents">
               <div className="row justify-content-center">
                 <div className="col-md-12">
                   <div className="form-block">
                     <div className="mb-4">
-                      <h3>
-                        <strong>Ingreso</strong>
+                      <h3 className="text-center">
+                        <strong>Ingresar</strong>
                       </h3>
-                      <p className="mb-4">
+                      <p className="mb-4 mt-3">
                         Complete todos los datos para ingresar a la plataforma
                       </p>
                     </div>
-                    <form action="#" method="post" onChange={() => {}}>
+                    <form
+                      onSubmit={(e) => actions.handleLogin(e, props.history)}
+                    >
                       <div className="form-group last mb-4">
-                        <label for="email">Email</label>
                         <input
                           type="email"
                           className="form-control"
-                          id="email"
+                          placeholder="Correo Electroníco"
+                          id="correo"
+                          name="correo"
+                          onChange={actions.handleChange}
+                          required
                         />
                       </div>
                       <div className="form-group last mb-4">
-                        <label for="password">Password</label>
                         <input
                           type="password"
                           className="form-control"
-                          id="password"
+                          name="contrasenia"
+                          placeholder="Contraseña"
+                          id="contrasenia"
+                          onChange={actions.handleChange}
+                          required
                         />
-                      </div>
-                      <div className="d-flex mb-5 align-items-center">
-                        <label className="control control--checkbox mb-0">
-                          <span className="caption">Remember me</span>
-                          <input
-                            type="checkbox"
-                            checked={() => {}}
-                            onChange={() => {}}
-                          />
-                          <div className="control__indicator"></div>
-                        </label>
-                        <span className="ml-auto">
-                          <a href="#" className="forgot-pass">
-                            Forgot Password
-                          </a>
-                        </span>
                       </div>
                       <input
                         type="submit"
-                        value="Log In"
-                        className="btn btn-pill text-white btn-block btn-primary"
+                        value="Ingresar"
+                        className="btn btn-pill text-white btn-block btn-primary font-weight-bold"
                       />
                     </form>
+                    <div>
+                      <p className="mt-2">
+                        <Link to="/">Regresa al Inicio</Link>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
